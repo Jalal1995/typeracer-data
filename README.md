@@ -2,7 +2,7 @@
 
 ## Links
 * [heroku](https://typeracer-data.herokuapp.com/)
-* [github](https://github.com/jalal1995)
+* [github](https://github.com/jalal1995/typeracer-data)
 
 # How to use in heroku
 type your email which you are using in typeracer.com and then you will see your data
