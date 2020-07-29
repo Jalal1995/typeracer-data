@@ -1,0 +1,6 @@
+server:
+  port: ${PORT:8080}
+
+url:
+  heroku: https://typeracer-data.herokuapp.com/races?email=
+  localhost: http://localhost:8080/races?email=
