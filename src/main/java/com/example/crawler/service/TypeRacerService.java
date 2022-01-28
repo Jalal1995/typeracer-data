@@ -51,11 +51,12 @@ public class TypeRacerService {
             }
             final LocalDate to = (toS == null || toS.isEmpty()) ? LocalDate.now().plusDays(1) : convertToDate(toS).plusDays(1);
             final LocalDate from = (fromS == null || fromS.isEmpty()) ? convertToDate("2000-01-01") : convertToDate(fromS).minusDays(1);
-            List<Race> collect = list.stream()
-                    .filter(race -> race.date.isAfter(from) && race.date.isBefore(to))
-                    .sorted(Comparator.comparing(r -> r.date))
-                    .collect(Collectors.toList());
-            return Optional.of(collect);
+//            List<Race> collect = list.stream()
+//                    .filter(race -> race.date.isAfter(from) && race.date.isBefore(to))
+//                    .sorted(Comparator.comparing(r -> r.date))
+//                    .collect(Collectors.toList());
+//            return Optional.of(collect);
+            return Optional.of(list);
         } catch (Exception ignored) {
             return Optional.empty();
         }
