@@ -1,6 +1,7 @@
 package com.example.crawler.service;
 
 import com.example.crawler.entity.Race;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.jsoup.Jsoup;
@@ -38,15 +39,13 @@ public class TypeRacerService {
             String typeRacerRootPage = rootPage(email);
             Document doc = Jsoup.parse(typeRacerRootPage);
             Elements races = doc.select("body .container .main .themeContent");
-            Element table = races.select("table").get(0);
-            Elements rows = table.select("tr");
-            for (int i = 1; i < rows.size(); i++) { //first row is the col names so skip it.
-                Element row = rows.get(i);
-                Elements cols = row.select("td");
-                int wpm = Integer.parseInt(extractWpm(cols.get(1).text()));
-                String accS = cols.get(2).text();
+            Elements divs = races.select(".Scores__Table__Row");
+            for (Element row : divs) { //first row is the col names so skip it.
+                Elements cols = row.select("div");
+                int wpm = Integer.parseInt(extractWpm(cols.get(2).text()));
+                String accS = cols.get(3).text();
                 Double acc = Double.parseDouble(extractAccuracy(accS));
-                String dateS = cols.get(5).text();
+                String dateS = cols.get(6).text();
                 LocalDate date = extractDate(dateS);
                 list.add(new Race(date, wpm, acc));
             }
