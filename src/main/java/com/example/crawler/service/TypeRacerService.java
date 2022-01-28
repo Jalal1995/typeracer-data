@@ -49,7 +49,7 @@ public class TypeRacerService {
                 LocalDate date = extractDate(dateS);
                 list.add(new Race(date, wpm, acc));
             }
-            final LocalDate to = (toS == null || toS.isEmpty()) ? LocalDate.now().plusDays(1) : convertToDate(toS);
+            final LocalDate to = (toS == null || toS.isEmpty()) ? LocalDate.now().plusDays(1) : convertToDate(toS).plusDays(1);
             final LocalDate from = (fromS == null || fromS.isEmpty()) ? convertToDate("2000-01-01") : convertToDate(fromS);
             List<Race> collect = list.stream()
                     .filter(race -> race.date.isAfter(from) && race.date.isBefore(to))
